@@ -4,33 +4,33 @@
 //------------------------------------------------------------------------------
 namespace rec Test
 
+
+namespace rec Test
+
 module Test1 =
     open Example
 
-    let one (x : Test1) = x.one
-    let two (x : Test1) = x.two
-    let three (x : Test1) = x.three
-    let four (x : Test1) = x.four
+    let one (x: Test1) = x.one
+    let two (x: Test1) = x.two
+    let three (x: Test1) = x.three
+    let four (x: Test1) = x.four
 
-    let create (one : int) (two : string) (three : float) (four : float32) : Test1 =
+    let create (one: int) (two: string) (three: float) (four: float32): Test1 =
         { one = one
           two = two
           three = three
           four = four }
 
-module Test2 =
-    open Example
+    let map (mapone: int -> int)
+            (maptwo: string -> string)
+            (mapthree: float -> float)
+            (mapfour: float32 -> float32)
+            (record': Test1)
+            =
+        { record' with
+              one = mapone record'.one
+              two = maptwo record'.two
+              three = mapthree record'.three
+              four = mapfour record'.four }
+namespace rec Test
 
-    let one (x : Test2) = x.one
-    let two (x : Test2) = x.two
-
-    let create (one : Test1) (two : string) : Test2 =
-        { one = one
-          two = two }
-
-    let map (mapone : int -> int) (maptwo : string -> string) (mapthree : float -> float) (mapfour : float32 -> float32) (record': Test1) =
-      { record' with
-          one = mapone record'.one
-          two = maptwo record'.two
-          three = mapthree record'.three
-          four = mapfour record'.four }
